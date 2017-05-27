@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title>form表单</title>
+<script type="text/javascript"  th:src="@{/webjars/jquery/1.11.1/jquery.min.js}"></script>
+</head>
+<script th:inline="javascript">
+/*<![CDATA[*/
+function userDetail(id,userName,email,company)
+{
+	var url = "/form-detail-page?id="+id+"&userName="+userName+"&email="+email+"&company="+company;
+	window.open(url);
+}
+
+/*]]>*/
+</script>
+<body>
+	<div th:text="${title}">目录</div>
+	<div>
+	<table border="1">
+		<tr>
+		        <th>用户名</th>
+		        <th>邮箱</th>
+		        <th>机构单位</th>
+		        <th>管理员</th>
+		        <th th:width="150">兴趣爱好</th>
+		        <th>Map</th>
+		        <th th:width="150">操作</th>
+		</tr>
+		<tr th:each="user:${userList}">
+		<td th:text="${user.userName}"></td>
+		<td th:text="${user.email}"></td>
+		<td th:text="${user.company}"></td>
+		<td th:text="${user.isAdmin}==true?'是':'否'"></td>
+		<td>
+		<span th:each="interest:${user.interests}"  th:text="${interest.interestName}"></span>
+		</td>
+		<td><span th:each="map:${user.maps}"  th:text="${map}"></span></td>
+		<td>
+			<a th:attr="href='javascript: userDetail (\''+${user.id}+'\',\''+${user.userName}+'\',\''+${user.email}+'\',\''+${user.company}+'\');'" >用户详细</a>
+		</td>
+		</tr>
+	</table>
+	</div>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title th:text="${title}">thymeleaf</title>
+<script type="text/javascript"  th:src="@{/webjars/jquery/1.11.1/jquery.min.js}"></script>
+</head>
+<script th:inline="javascript">
+/*<![CDATA[*/
+function userDetail(id,userName,email)
+{
+	var url = "/user-detail-page?id="+id+"&userName="+userName+"&email="+email;
+	window.open(url);
+}
+/*]]>*/
+</script>
+<body>
+	<div th:text="${title}">目录</div>
+	<div>
+		<ol>
+		<li><a  th:href="@{http://www.sina.com.cn}" target="_blank">新浪网</a></li>
+		<li><a  th:href="@{/var-page}" target="_blank">变量表达式</a></li>
+		<li><a  th:href="@{var-page}" target="_blank">变量表达式</a></li>
+		<li>
+		<div th:object="${user}">
+		    <p>id: <span th:text="*{id}">100</span></p>
+		    <p>detail: <a th:href="@{/user-detail-page(id=*{id},userName=*{userName},email=*{email})}" target="_blank">用户详细</a></p>
+		    <p>detail: <a th:attr="href='javascript: userDetail (\''+*{id}+'\',\''+*{userName}+'\',\''+*{email}+'\');'" >用户详细</a></p>
+<!-- 		    <p>detail: <a th:href="javascript:userDetail(\''+*{id}+'\',\''+*{userName}+'\',\''+*{email}+'\');">用户详细</a></p> -->
+	     </div>
+		</li>
+		</ol>
+	</div>
+</body>
+</html>

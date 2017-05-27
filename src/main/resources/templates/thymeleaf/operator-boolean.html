@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title th:text="${title}">thymeleaf</title>
+<script type="text/javascript"  th:src="@{/webjars/jquery/1.11.1/jquery.min.js}"></script>
+</head>
+<body>
+    <div th:text="${title}">目录</div>
+	<div>
+		<ol>
+				<li>and：<span  th:if="${!#lists.isEmpty(list)} and ${#lists.isEmpty(list)}" th:text="${!#lists.isEmpty(list)} and ${#lists.isEmpty(list)}">and</span></li>
+				<li>or：<span  th:if="${!#lists.isEmpty(list)} or ${#lists.isEmpty(list)}" th:text="${!#lists.isEmpty(list)} or ${#lists.isEmpty(list)}">or</span></li>
+				<li>!(not)：<span  th:if="${!#lists.isEmpty(list)}" th:text="${!#lists.isEmpty(list)}">not</span></li>
+		</ol>
+	</div>
+</body>
+</html>

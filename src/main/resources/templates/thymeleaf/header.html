@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title th:text="${title}">thymeleaf</title>
+<script type="text/javascript"  th:src="@{/webjars/jquery/1.11.1/jquery.min.js}"></script>
+</head>
+<body>
+	<div th:fragment="head1">using thymeleaf1</div>
+	<div th:fragment="head2">using thymeleaf2</div>
+</body>
+</html>

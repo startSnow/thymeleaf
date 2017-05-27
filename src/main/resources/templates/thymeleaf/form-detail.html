@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title>form表单</title>
+</head>
+<body>
+	<table border="1">
+		<tr>
+		        <th>用户名</th>
+		        <th>邮箱</th>
+		        <th>机构单位</th>
+		</tr>
+		<tr>
+		<td th:text="${userName}"></td>
+		<td th:text="${email}"></td>
+		<td th:text="${company}"></td>
+		</tr>
+	</table>
+</body>
+</html>

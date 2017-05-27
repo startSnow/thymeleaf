@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title th:text="${title}">thymeleaf</title>
+<script type="text/javascript"  th:src="@{/webjars/jquery/1.11.1/jquery.min.js}"></script>
+</head>
+<body>
+	<div th:text="${title}">目录</div>
+	<div>
+		<ol>
+		<li>文本（放在单引号里面，任意字符）：
+			<ol>
+				<li>可以有空格、逗号等:Now you are looking at a <span th:text="'working web application.,。'">template file</span></li>
+				<li>一些转义：
+				<ol>
+				<li>单引号转义\':Now you are looking at a <span th:text="'working \'web\' application'">template file</span>.</li>
+				<li>双引号转义&quot;  :Now you are looking at a <span th:text="'working &quot;web&quot; application'">template file</span>.</li>
+				<li>&amp;转义:Now you are looking at a <span th:text="'working web&amp;application'">template file</span>.</li>
+				</ol>
+				</li>
+			</ol>
+		</li>
+		<li>数字：
+			<ol>
+				<li>The year is <span th:text="2014">1492</span>.</li>
+				<li>In two years, it will be <span th:text="2014 + 2">1494</span>.</li>
+			</ol>
+		</li>
+		<li>布尔值(true/false)：
+			<ol>
+				<li>获取对象属性：<span th:if="${user.isAdmin} == false"> ...</span></li>
+				<li>获取对象的方法(public)：<span th:if="${user.isAdmin()} == false"> ...</span></li>
+			</ol>
+		</li>
+		<li>null:<span th:if="${user.isAdmin()} == null"> ...</span></li>
+		<li>literal tokens(不需单引号,不能有空格、逗号):
+		Now you are looking at a <span th:text="workingwebapplication">template file</span>
+		</li>
+		<li>连接：
+			<ol>
+				<li>连接符+：<span th:text="'The name of the user is ' + ${user.userName}"></span></li>
+				<li>文本替换符号|：<span th:text="|Welcome to our application, ${user.userName}true!|"></span></li>
+				<li>文本替换符号|：<span th:text="|Welcome to our application, 3+true+dd!|"></span></li>
+				<li>连接：<span th:text="'Welcome to our application, ' + ${user.userName} + '!'"></span></li>
+				<li>文本替换符号|：<span th:text="${onevar} + ' ' + |${twovar}, 3${threevar}|"></span></li>
+			</ol>
+		</li>
+		<li>th:utext：
+			<ol>
+				<li>th:text：<span th:text="${textWelcome}">textWelcome!</span></li>
+				<li>th:utext：<span th:utext="${textWelcome}">textWelcome!</span></li>
+			</ol>
+		</li>
+		</ol>
+	</div>
+</body>
+</html>

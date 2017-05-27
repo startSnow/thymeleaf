@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title th:text="${title}">thymeleaf</title>
+<script type="text/javascript"  th:src="@{/webjars/jquery/1.11.1/jquery.min.js}"></script>
+</head>
+<style type="text/css">
+.green{
+color:green;
+}
+.blue{
+color:blue;
+}
+.red{
+font-size:30px;
+}
+</style>
+<body>
+	<div th:text="${title}">目录</div>
+	<div>
+		<ol>
+		<li>th:attr：
+			<ol>
+				<li>设置th:border/th:bgcolor属性(支持HTML5)：
+					<table th:border="1" th:bgcolor="green">
+						<tr>
+					    	<th>Month</th>
+					    	<th>Savings</th>
+					  	</tr>
+					  	<tr>
+					    	<td>January</td>
+					    	<td>$100</td>
+					  	</tr>
+					</table>
+				</li>
+				<li>普通链接：<a  th:href="@{/operator-page}">运算符样例</a></li>
+				<li>th:attr设置别的属性的值：
+				<ol>
+				<li>设置href属性：<a  th:attr="href=@{/operator-page}">运算符样例</a></li>
+				<li>设置多个属性的值：<img  th:attr="src=@{/webjars/kendo/2014.1.416/css/BlueOpal/markers.png},title='markers1',alt='markers图片'" /></li>
+				</ol>
+				</li>
+			</ol>
+		</li>
+		<li>th:alt-title设置相同属性的值：   <img  th:attr="src=@{/webjars/kendo/2014.1.416/css/BlueOpal/markers.png}" th:alt-title="markers2" /></li>
+		<li>
+			<ol>
+				<li>th:attrappend前缀：<input type="button" value="Do it!" class="blue" th:attrappend="class=${' ' + cssStyle}" /></li>
+				<li>th:attrprepend后缀：<input type="button" value="Do it!" class="blue" th:attrprepend="class=${cssStyle+' '}" /></li>
+			</ol>
+		</li>
+		<li>th:checked设置复选框的值：
+			<ol>
+				<li>选中：<input type="checkbox" th:checked="true"/></li>
+				<li>未选中：<input type="checkbox" th:checked="false"/></li>
+			</ol>
+		</li>
+		</ol>
+	</div>
+</body>
+</html>

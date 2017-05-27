@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title th:text="${title}">thymeleaf</title>
+<script type="text/javascript"  th:src="@{/webjars/jquery/1.11.1/jquery.min.js}"></script>
+</head>
+<body>
+    <div th:text="${title}">目录</div>
+	<div>
+		<ol>
+				<li>比较表达式：
+					<ol>
+					<li>>(gt)：<span th:text="1+1" th:if="${#lists.size(list)} > 1">大于></span>else</li>
+					<li>小于lt：<span th:if="${#lists.size(list)} lt 1">小于</span>else</li>
+					<li>>=(ge)：<span  th:if="${#lists.size(list)} >= 1">大于等于>=</span>else</li>
+					<li>小于等于(le)：<span  th:if="${#lists.size(list)} le 1">小于等于</span>else</li>
+					<li>!(not)：<span  th:if="${!#lists.isEmpty(list)}">!(not)</span>else</li>
+					</ol>
+				</li>
+				<li>相等和不等表达式： 
+				<ol>
+					<li>==(eq)：<span th:text="'Execution mode is ' + ( (${execMode} == 'dev')? 'Development' : 'Production')">等于==</span></li>
+					<li>!=(ne/neq)：size:<span th:text="${#lists.size(list)}" th:if="${#lists.size(list)} != 1"></span></li>
+					</ol>
+				</li>
+		</ol>
+	</div>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title th:text="${title}">thymeleaf</title>
+<script type="text/javascript"  th:src="@{/webjars/jquery/1.11.1/jquery.min.js}"></script>
+</head>
+<body>
+	<div th:text="${title}">目录</div>
+	<div>
+		<ol>
+		<li>${title}：<span th:text = "${title}">title</span></li>
+		<li>${session.sessionStr}：<span th:text = "${session.sessionStr}">sessionStr1</span></li>
+		<li>${#httpSession.getAttribute('sessionStr')}：<span th:text = "${#httpSession.getAttribute('sessionStr')}">sessionStr2</span></li>
+		<li>${requestStr}：<span th:text = "${requestStr}">requestStr1</span></li>
+		<li>${#httpServletRequest.getAttribute('requestStr')}：<span th:text = "${#httpServletRequest.getAttribute('requestStr')}">requestStr2</span></li>
+		<li>${#vars[title]}：<span th:text = "${#vars[title]}">title</span></li>
+		<li>${#vars.get('title')}：<span th:text = "${#vars.get('title')}">title</span></li>
+		<li>${#vars.get('requestStr')}：<span th:text = "${#vars.get('requestStr')}">title</span></li>
+		<li>${#vars.size()}：<span th:text = "${#vars.size()}">size</span></li>
+		<li>${#ctx.variables[title]}：<span th:text = "${#ctx.variables[title]}">title</span></li>
+		<li>${#ctx.variables.get('title')：<span th:text = "${#ctx.variables.get('title')}">title</span></li>
+		<li>${#ctx.locale.country}：Established locale country: <span th:text="${#ctx.locale.country}">US</span>.</li>
+		<li>${#ctx.httpSession.getAttribute('sessionStr')}：<span th:text = "${#ctx.httpSession.getAttribute('sessionStr')}">title</span></li>
+		<li>${#ctx.httpServletRequest.getAttribute('requestStr')}：<span th:text = "${#ctx.httpServletRequest.getAttribute('requestStr')}">title</span></li>
+<!-- 		<li><div th:text="${webContext}"></div></li> -->
+<!-- 		<li> -->
+<!-- 		<div th:each="var:${webContext.variables}"> -->
+<!-- 		<div th:text="${var}"></div> -->
+<!-- 		</div> -->
+<!-- 		</li> -->
+		<li>${#lists.size(testList)}:<span th:text = "${#lists.size(testList)}">2</span></li>
+		<li>${#lists.size(testList)}+2:<span th:text = "${#lists.size(testList)}+2">2</span></li>
+		<li>${#lists.size(testList)}+'prepend':<span th:text = "${#lists.size(testList)}+'prepend'">2+'prepend'</span></li>
+		<li>${#calendars.format(today,'dd MMMM yyyy')}:今天是<span th:text = "${#calendars.format(today,'dd MMMM yyyy')}">13 May 2011</span></li>
+		<li>${#calendars.format(today,'dd MMMM yyyy')}:今天是<span th:text = "${#calendars.format(today,'yyyy-MM-dd')}">13 May 2011</span></li>
+		<li>${#locale.country}:Established locale country: <span th:text="${#locale.country}">US</span>.</li>
+		
+		</ol>
+	</div>
+</body>
+</html>

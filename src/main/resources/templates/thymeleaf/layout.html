@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title th:text="${title}">thymeleaf</title>
+<script type="text/javascript"  th:src="@{/webjars/jquery/1.11.1/jquery.min.js}"></script>
+</head>
+<body>
+	<div th:text="${title}">目录</div>
+	<div>
+		<ol>
+		<li>th:include（只支持绝对路径）：<span th:include="thymeleaf/header::head1"></span></li>
+		<li>th:replace：<span th:replace="thymeleaf/header :: head1"></span></li>
+		<li>th:include：<span th:include="thymeleaf/header::head2"></span></li>
+		<li>th:remove(将模拟数据在真实环境中移除)：
+			<ol>
+				<li>all(移除标签及标签内容):
+					<table border="1">
+				      <tr>
+				        <th>name</th>
+				        <th>email</th>
+				        <th>管理员</th>
+				      </tr>
+				      <tr th:each="user: ${list}">
+				        <td th:text="${user.userName}">Onions</td>
+				        <td th:text="${user.email}">test@test.com.cn</td>
+				        <td th:text="${user.isAdmin}">yes</td>
+				      </tr>
+				      <tr th:remove="all">
+				        <td>xiaoming</td>
+				        <td>xiaoming@test.com.cn</td>
+				        <td>no</td>
+				      </tr>
+				      <tr th:remove="all">
+				        <td>lihong</td>
+				        <td>lihong@test.com.cn</td>
+				        <td>no</td>
+				      </tr>
+		    		</table>
+				</li>
+				<li>body(只移除内容):
+				<table border="1">
+				      <tr>
+				        <th>name</th>
+				        <th>email</th>
+				        <th>管理员</th>
+				      </tr>
+				      <tr th:each="user: ${list}">
+				        <td th:text="${user.userName}">Onions</td>
+				        <td th:text="${user.email}">test@test.com.cn</td>
+				        <td th:text="${user.isAdmin}">yes</td>
+				      </tr>
+				      <tr th:remove="body">
+				        <td>xiaoming</td>
+				        <td>xiaoming@test.com.cn</td>
+				        <td>no</td>
+				      </tr>
+				      <tr th:remove="body">
+				        <td>lihong</td>
+				        <td>lihong@test.com.cn</td>
+				        <td>no</td>
+				      </tr>
+		    		</table>
+				</li>
+				<li>tag(只移除所在标签):
+				<table border="1">
+				      <tr>
+				        <th>name</th>
+				        <th>email</th>
+				        <th>管理员</th>
+				      </tr>
+				      <tr th:each="user: ${list}">
+				        <td th:text="${user.userName}">Onions</td>
+				        <td th:text="${user.email}">test@test.com.cn</td>
+				        <td th:text="${user.isAdmin}">yes</td>
+				      </tr>
+				      <tr th:remove="tag">
+				        <td>xiaoming</td>
+				        <td>xiaoming@test.com.cn</td>
+				        <td>no</td>
+				      </tr>
+				      <tr th:remove="tag">
+				        <td>lihong</td>
+				        <td>lihong@test.com.cn</td>
+				        <td>no</td>
+				      </tr>
+		    		</table>
+				</li>
+				<li>all-but-first(除第一条外移除所有内容):
+				<table border="1">
+				      <tr>
+				        <th>name</th>
+				        <th>email</th>
+				        <th>管理员</th>
+				      </tr>
+				      <tr th:each="user: ${list}">
+				        <td th:text="${user.userName}">Onions</td>
+				        <td th:text="${user.email}">test@test.com.cn</td>
+				        <td th:text="${user.isAdmin}">yes</td>
+				      </tr>
+				      <tr th:remove="all-but-first">
+				        <td>xiaoming</td>
+				        <td>xiaoming@test.com.cn</td>
+				        <td>no</td>
+				      </tr>
+				      <tr th:remove="all-but-first">
+				        <td>lihong</td>
+				        <td>lihong@test.com.cn</td>
+				        <td>no</td>
+				      </tr>
+		    		</table>
+				</li>
+				<li>none(donothing):
+				<ol>
+				<li><div th:remove="${condition}? tag:none">测试none1</div></li>
+				<li><div th:remove="${condition}? tag">测试none2</div></li>
+				<li><div th:remove="${condition}==null? tag:${condition}">测试none3</div></li>
+				</ol>
+				</li>
+			</ol>
+		</li>
+		
+		</ol>
+	</div>
+</body>
+</html>

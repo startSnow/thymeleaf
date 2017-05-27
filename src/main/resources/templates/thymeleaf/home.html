@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title th:text="${welcome}">thymeleaf</title>
+<script type="text/javascript"  th:src="@{/webjars/jquery/1.11.1/jquery.min.js}"></script>
+</head>
+<script th:inline="javascript">
+/*<![CDATA[*/
+var welcome = [[${welcome}]];
+//1.通过th:inline="javascript"方式
+//alert('th:inline="javascript"'+welcome);
+//<1>javascript内联时增加JS代码
+/*[+
+var msg1  = 'This is a working application';
++]*/
+//<2>javascript内联时移除JS代码
+/*[- */
+var msg2  = 'This is a non-working template';
+/* -]*/
+$(function(){
+});
+/*]]>*/
+</script>
+<body th:inline="text">
+	<!-- 2.通过th:inline="text" -->
+	<div>[[${welcome}]]目录</div>
+	<div>
+		<ol>
+			<li>简单表达式
+				<ol>
+				<li><a th:href="@{/var-page}" target="_blank">变量表达式${ }</a></li>
+				<li><a th:href="@{/star-page}" target="_blank">星号表达式*{ }</a></li>
+				<li><a th:href="@{/message-page}" target="_blank">消息表达式#{ }</a></li>
+				<li><a th:href="@{/link-page}" target="_blank">链接表达式@{ }</a></li>
+				</ol>
+			</li>
+			<li><a th:href="@{/text-page}" target="_blank">th:text/th:utext属性</a></li>
+			<li>运算符
+				<ol>
+				<li><a th:href="@{/operator-page}" target="_blank">算术运算符</a></li>
+				<li><a th:href="@{/operator-equal-page}" target="_blank">比较和相等运算符</a></li>
+				<li><a th:href="@{/operator-boolean-page}" target="_blank">布尔运算符</a></li>
+				</ol>
+			</li>
+			<li><a th:href="@{/condition-express-page}" target="_blank">条件表达式</a></li>
+			<li><a th:href="@{/iter-page}" target="_blank">循环th:each</a></li>
+			<li><a th:href="@{/condition-page}" target="_blank">条件判断</a></li>
+			<li><a th:href="@{/attr-page}" target="_blank">设置属性值</a></li>
+			<li><a th:href="@{/layout-page}" target="_blank">模板布局</a></li>
+			<li><a th:href="@{/with-page}" target="_blank">局部变量定义th:with</a></li>
+			<li><a th:href="@{ / comment-page }" target="_blank">模板注释</a></li>
+		</ol>
+		<ol>
+			<li><a th:href="@{/form-list-page}" target="_blank">form表单</a></li>
+		</ol>
+	</div>
+</body>
+</html>

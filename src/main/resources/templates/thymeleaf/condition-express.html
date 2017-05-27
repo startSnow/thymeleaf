@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title th:text="${title}">thymeleaf</title>
+<script type="text/javascript"  th:src="@{/webjars/jquery/1.11.1/jquery.min.js}"></script>
+</head>
+<style type="text/css">
+.red{
+color:red;
+}
+.green{
+color:green;
+}
+.blue{
+color:blue;
+}
+</style>
+<body>
+	<div th:text="${title}">目录</div>
+	<div>
+		<ol>
+		<li>a? b:c(if ? then:else)：<span th:class="${title} ? 'green':' red'">样例一</span></li>
+		<li>a?c(if ? then)：<span th:class="${title1} ? 'green'">样例二</span></li>
+		<li>a?c(if ? then)：<span th:class="${title} ? 'green'">样例三</span></li>
+		<li>默认表达式(?:)(if null:defaultValue)：<span th:class="${title2} ?: 'blue'">样例四</span></li>
+		</ol>
+	</div>
+</body>
+</html>

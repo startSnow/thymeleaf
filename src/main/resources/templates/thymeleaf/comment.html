@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title th:text="${title}">thymeleaf</title>
+<script type="text/javascript"  th:src="@{/webjars/jquery/1.11.1/jquery.min.js}"></script>
+</head>
+<body>
+	<div th:text="${title}">目录</div>
+	<div>
+		<ol>
+		<li>解释器级注释块(thymeleaf解析时会移除掉注释块所有代码)：
+		<!--/* this is content! */-->
+		</li>
+		<li>针对原型的注释(thymeleaf解析时会移除掉注释标签，但保留标签内的内容)：
+			<!--/*/ this is content! /*/-->
+		</li>
+		<li>与th:block结合(thymeleaf解析时会移除掉th:block注释块，但保留标签内的内容)：
+			<ol>
+				<li>
+				   <!--/*/<th:block th:each="user:${list}">/*/-->
+				    <div th:text="${user.userName}"></div>
+				    <!--/*/</th:block>/*/-->
+				</li>
+				<li>
+					<!--/*/<th th:each="user:${list}">/*/-->
+				    <div th:text="${user.userName}"></div>
+				    <!--/*/</th>/*/-->
+				</li>
+			</ol>
+		</li>
+		</ol>
+	</div>
+</body>
+</html>

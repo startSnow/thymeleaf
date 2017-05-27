@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title th:text="${title}">thymeleaf</title>
+<script type="text/javascript"  th:src="@{/webjars/jquery/1.11.1/jquery.min.js}"></script>
+</head>
+<body>
+	<div th:text="${title}"></div>
+	<div>
+	<ol>
+		<li>
+		 <div th:object="${user}">
+		    <p>id: <span th:text="*{id}">100</span></p>
+		    <p>userName: <span th:text="*{userName}">XiaoMing</span></p>
+		    <p>email: <span th:text="${user.email}">XiaoMing@163.com</span></p>
+	     </div>
+		</li>
+		<li>
+		 <div th:object="${user}">
+		    <p>id: <span th:text="${#object.id}">100</span></p>
+		    <p>userName: <span th:text="|*{userName}   sssss|">XiaoMing</span></p>
+		    <p>email: <span th:text="${user.email}">XiaoMing@163.com</span></p>
+		    <p>company(设置默认值): <span th:text="*{company}?: '(no company specified)'">company</span></p>
+	     </div>
+		</li>
+		<li>
+		    <p>id: <span th:text="${session.user.id}">100</span></p>
+		    <p>userName: <span th:text="${session.user.userName}">XiaoMing</span></p>
+		    <p>email: <span th:text="${session.user.email}">XiaoMing@163.com</span></p>
+		</li>
+	</ol>
+	</div>
+
+</body>
+</html>

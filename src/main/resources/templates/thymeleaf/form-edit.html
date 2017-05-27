@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title>form表单</title>
+<script type="text/javascript"  th:src="@{/webjars/jquery/1.11.1/jquery.min.js}"></script>
+</head>
+<script th:inline="javascript">
+/*<![CDATA[*/
+$(function(){
+		$("#saveButton").click( 
+				function () { 
+					
+					$.post("form-edit.json",$("#myForm").serialize(),function(data)
+							{
+								alert("保存成功！");
+							});
+				});
+});
+/*]]>*/
+</script>
+<body>
+	<div th:text="${title}">目录</div>
+	<div>
+	<form modelAttribute="dto" th:object="${dto}" id="myForm">
+		<table>
+			<tr>
+				<td width="100px">用户名：</td>
+				<td width="100px">
+				<input type="text" th:value="${dto.userName}" th:field="*{userName}"/>
+<!-- 				<div th:errors="${dto.userName}" style="color: red;"></div> -->
+				</td>
+			</tr>
+			<tr>
+				<td>密码：</td>
+				<td><input type="password" th:value="${dto.password}" th:field="*{password}"/></td>
+			</tr>
+			<tr>
+				<td>邮箱：</td>
+				<td><input type="text" th:value="${dto.email}" th:field="*{email}"/></td>
+			</tr>
+			<tr>
+				<td>机构单位：</td>
+				<td><input type="text" th:value="${dto.company}" th:field="*{company}"/></td>
+			</tr>
+			<tr>
+				<td>兴趣爱好：</td>
+				<td>
+					<div th:each="interest:${interests}">
+					<input type="checkbox" th:field="${dto.interestIds}" th:value="${interest.id}"  />
+	   				<label th:for="${#ids.prev('interestIds')}" th:text="${interest.interestName}" >Heating</label>
+					</div>
+				</td>
+			</tr>
+			<tr>
+					<td><input th:value="保存" type="button" id="saveButton"/></td>
+			</tr>
+		</table>
+	</form>
+	</div>
+</body>
+</html>

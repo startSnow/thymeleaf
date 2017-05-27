@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title th:text="${title}">thymeleaf</title>
+<script type="text/javascript"  th:src="@{/webjars/jquery/1.11.1/jquery.min.js}"></script>
+</head>
+<body>
+	<div th:text="${title}">目录</div>
+	<div>
+		<ol>
+		<li>
+			<div th:with="firstPer=${list[0]}">
+	 		 	<p>The name of the first person is <span th:text="${firstPer.userName}">Julius Caesar</span>.</p>
+			</div>
+		</li>
+		<li>
+			<div th:with="firstPer=${list[0]},secondPer=${list[1]}">
+			  <p>The name of the first person is <span th:text="${firstPer.userName}">Julius Caesar</span>.</p>
+			  <p> But the name of the second person is  <span th:text="${secondPer.userName}">Marcus Antonius</span>.
+			  </p>
+			</div>
+		</li>
+		<li>
+			<div th:with="company=${user.company},account=${accounts[company]}">
+				<div th:text="${company}"></div>
+				<div th:text="${account}"></div>
+			</div>
+		</li>
+		</ol>
+	</div>
+</body>
+</html>

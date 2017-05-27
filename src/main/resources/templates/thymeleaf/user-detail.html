@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title th:text="${title}">thymeleaf</title>
+<script type="text/javascript"  th:src="@{/webjars/jquery/1.11.1/jquery.min.js}"></script>
+</head>
+<body>
+	<div th:text="用户详细">用户详细</div>
+	<div th:text="${id}">2</div>
+	<div th:text="${userName}">xiaoming</div>
+	<div th:text="${email}">xiaoming@126.com</div>
+</body>
+</html>

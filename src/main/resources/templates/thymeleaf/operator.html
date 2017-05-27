@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title th:text="${title}">thymeleaf</title>
+<script type="text/javascript"  th:src="@{/webjars/jquery/1.11.1/jquery.min.js}"></script>
+</head>
+<body>
+    <div th:text="${title}">目录</div>
+	<div>
+		<ol>
+				<li>+：1+1=<span th:text="1+1">1+1</span>.</li>
+				<li>-： 2-1=<span th:text="2-1">2-1</span>.</li>
+				<li>*：2*3=<span th:text="2*3">2*3</span>.</li>
+				<li>/： 9/4=<span th:text="9/4">9/4</span>.</li>
+				<li>%：9%4=<span th:text="9%4">9%4</span>.</li>
+		</ol>
+	</div>
+</body>
+</html>

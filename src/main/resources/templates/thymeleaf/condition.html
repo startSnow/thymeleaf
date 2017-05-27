@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title th:text="${title}">thymeleaf</title>
+<script type="text/javascript"  th:src="@{/webjars/jquery/1.11.1/jquery.min.js}"></script>
+</head>
+<body>
+	<div th:text="${title}">目录</div>
+	<div>
+		<ol>
+		<li>th:if：<a th:if="${ not #lists.isEmpty(testList)} "  th:href="@{ / }">主页</a>.</li>
+		<li>th:if：<a th:if="${ ! #lists.isEmpty(testList)} "  th:href="@{ / }">主页</a>.</li>
+		<li>th:unless：<a th:unless="${#lists.isEmpty(testList)} "  th:href="@{ / }">主页</a>.</li>
+		<li>th:switch/th:case：
+		<div th:switch="${#lists.size(testList)} " >
+		<p th:case="3">testList的size为<span th:text="${#lists.size(testList)}">3</span></p>
+  		<p th:case="2">testList的size为<span th:text="${#lists.size(testList)}">2</span></p>
+		</div>
+		</li>
+		<li>th:switch/th:case默认值：
+		<div th:switch="${#lists.size(testList)} " >
+		<p th:case="1">testList的size为<span th:text="${#lists.size(testList)}">1</span></p>
+  		<p th:case="2">testList的size为<span th:text="${#lists.size(testList)}">2</span></p>
+  		<p th:case="*">testList的size为<span th:text="${#lists.size(testList)}">2</span></p>
+		</div>
+		</li>
+		</ol>
+	</div>
+</body>
+</html>
